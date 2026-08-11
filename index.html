@@ -33,7 +33,7 @@
          ABERTURA
     ========================== -->
 
-    <section id="abertura" class="abertura">
+    <section id="abertura" class="pagina pagina-abertura ativa">
 
         <div class="abertura-conteudo">
 
@@ -69,7 +69,8 @@
          CONVITE
     ========================== -->
 
-    <main id="convite" class="escondido">
+    <main id="convite" class="convite escondido">
+
 
         <!-- CONTROLE DA MÚSICA -->
 
@@ -83,42 +84,40 @@
 
 
         <!-- =========================
-             WOODY FIXO
-             SEM ÁUDIO
+             WOODY
         ========================== -->
 
         <div class="woody-fixo">
 
             <button
-                id="woodyBotao"
                 class="woody-botao"
                 type="button"
                 aria-label="Woody"
-                title="Woody"
             >
-
                 <img
                     src="woody.png"
                     alt="Woody"
                     class="woody"
                 >
-
             </button>
 
         </div>
 
 
         <!-- =========================
-             HERO
+             PÁGINA 1 — BOAS-VINDAS
         ========================== -->
 
-        <section class="hero">
+        <section
+            class="pagina pagina-convite ativa"
+            data-pagina="0"
+        >
 
             <div class="nuvem nuvem1"></div>
             <div class="nuvem nuvem2"></div>
             <div class="nuvem nuvem3"></div>
 
-            <div class="hero-conteudo">
+            <div class="pagina-conteudo">
 
                 <p class="introducao">
                     ERA UMA VEZ...
@@ -134,7 +133,9 @@
                     nossos dias de amor.
                 </p>
 
-                <div class="estrela-hero">★</div>
+                <div class="estrela-hero">
+                    ★
+                </div>
 
                 <p class="convite-texto">
                     E agora chegou a hora de comemorar
@@ -149,16 +150,27 @@
                     1 ANO
                 </p>
 
+                <button
+                    class="botao botao-proximo"
+                    data-ir="1"
+                    type="button"
+                >
+                    VER DATA
+                </button>
+
             </div>
 
         </section>
 
 
         <!-- =========================
-             DATA
+             PÁGINA 2 — DATA
         ========================== -->
 
-        <section class="evento">
+        <section
+            class="pagina pagina-evento"
+            data-pagina="1"
+        >
 
             <div class="placa">
 
@@ -166,7 +178,9 @@
                     VOCÊ RECEBEU UMA MISSÃO ESPECIAL
                 </p>
 
-                <div class="estrela-placa">★</div>
+                <div class="estrela-placa">
+                    ★
+                </div>
 
                 <h2>
                     27 DE MARÇO
@@ -182,16 +196,39 @@
                     14:00 às 17:30
                 </p>
 
+                <div class="navegacao">
+
+                    <button
+                        class="botao botao-voltar"
+                        data-ir="0"
+                        type="button"
+                    >
+                        ← VOLTAR
+                    </button>
+
+                    <button
+                        class="botao botao-proximo"
+                        data-ir="2"
+                        type="button"
+                    >
+                        VER LOCAL →
+                    </button>
+
+                </div>
+
             </div>
 
         </section>
 
 
         <!-- =========================
-             LOCAL
+             PÁGINA 3 — LOCAL
         ========================== -->
 
-        <section class="local">
+        <section
+            class="pagina pagina-local"
+            data-pagina="2"
+        >
 
             <div class="card">
 
@@ -218,48 +255,27 @@
                     rel="noopener noreferrer"
                     class="botao"
                 >
-                    COMO CHEGAR
+                    📍 COMO CHEGAR
                 </a>
 
-            </div>
+                <div class="navegacao">
 
-        </section>
+                    <button
+                        class="botao botao-voltar"
+                        data-ir="1"
+                        type="button"
+                    >
+                        ← DATA
+                    </button>
 
+                    <button
+                        class="botao botao-proximo"
+                        data-ir="3"
+                        type="button"
+                    >
+                        🎁 PRESENTES →
+                    </button>
 
-        <!-- =========================
-             CONTAGEM
-        ========================== -->
-
-        <section class="contagem">
-
-            <p class="mini-titulo claro">
-                A MISSÃO JÁ COMEÇOU
-            </p>
-
-            <h2>
-                CONTAGEM REGRESSIVA
-            </h2>
-
-            <div class="contador">
-
-                <div>
-                    <strong id="dias">00</strong>
-                    <span>DIAS</span>
-                </div>
-
-                <div>
-                    <strong id="horas">00</strong>
-                    <span>HORAS</span>
-                </div>
-
-                <div>
-                    <strong id="minutos">00</strong>
-                    <span>MIN</span>
-                </div>
-
-                <div>
-                    <strong id="segundos">00</strong>
-                    <span>SEG</span>
                 </div>
 
             </div>
@@ -268,10 +284,13 @@
 
 
         <!-- =========================
-             PRESENTES
+             PÁGINA 4 — PRESENTES
         ========================== -->
 
-        <section class="presentes">
+        <section
+            class="pagina pagina-presentes"
+            data-pagina="3"
+        >
 
             <div class="card-presentes">
 
@@ -292,6 +311,7 @@
                     deixamos algumas sugestões:
                 </p>
 
+
                 <div class="presente-item">
 
                     <div class="presente-icone">
@@ -304,6 +324,7 @@
                     </div>
 
                 </div>
+
 
                 <div class="presente-item">
 
@@ -318,6 +339,7 @@
 
                 </div>
 
+
                 <div class="presente-item">
 
                     <div class="presente-icone">
@@ -331,16 +353,40 @@
 
                 </div>
 
+
+                <div class="navegacao">
+
+                    <button
+                        class="botao botao-voltar"
+                        data-ir="2"
+                        type="button"
+                    >
+                        ← LOCAL
+                    </button>
+
+                    <button
+                        class="botao botao-proximo"
+                        data-ir="4"
+                        type="button"
+                    >
+                        CONFIRMAR →
+                    </button>
+
+                </div>
+
             </div>
 
         </section>
 
 
         <!-- =========================
-             CONFIRMAÇÃO
+             PÁGINA 5 — CONFIRMAÇÃO
         ========================== -->
 
-        <section class="confirmacao">
+        <section
+            class="pagina pagina-confirmacao"
+            data-pagina="4"
+        >
 
             <div class="confirmacao-conteudo">
 
@@ -363,8 +409,28 @@
                     rel="noopener noreferrer"
                     class="botao-confirmar"
                 >
-                    CONFIRMAR PRESENÇA
+                    💌 CONFIRMAR PRESENÇA
                 </a>
+
+                <div class="navegacao">
+
+                    <button
+                        class="botao botao-voltar"
+                        data-ir="3"
+                        type="button"
+                    >
+                        ← PRESENTES
+                    </button>
+
+                    <button
+                        class="botao botao-proximo"
+                        data-ir="5"
+                        type="button"
+                    >
+                        FINAL →
+                    </button>
+
+                </div>
 
             </div>
 
@@ -372,10 +438,13 @@
 
 
         <!-- =========================
-             FINAL
+             PÁGINA 6 — FINAL
         ========================== -->
 
-        <section class="final">
+        <section
+            class="pagina pagina-final"
+            data-pagina="5"
+        >
 
             <div class="final-conteudo">
 
@@ -401,9 +470,18 @@
                     dessa história!
                 </p>
 
+                <button
+                    class="botao botao-voltar"
+                    data-ir="0"
+                    type="button"
+                >
+                    ↩ VOLTAR AO INÍCIO
+                </button>
+
             </div>
 
         </section>
+
 
     </main>
 
