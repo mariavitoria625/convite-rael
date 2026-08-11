@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rael | 1 Ano</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         MÚSICA
+    ========================== -->
+
+    <audio id="musica" loop preload="auto">
+        <source src="musica.mp3.wav" type="audio/wav">
+    </audio>
+
+
+    <!-- =========================
+         ÁUDIO DO WOODY
+    ========================== -->
+
+    <audio id="audioWoody" preload="auto">
+        <source src="woody-fala.wav" type="audio/wav">
+    </audio>
+
+
+    <!-- =========================
+         ABERTURA
+    ========================== -->
+
+    <section id="abertura" class="abertura">
+
+        <div class="abertura-conteudo">
+
+            <p class="abertura-pequeno">
+                UMA NOVA AVENTURA ESTÁ PRESTES A COMEÇAR...
+            </p>
+
+            <h1>RAEL</h1>
+
+            <div class="estrela-abertura">★</div>
+
+            <h2>1 ANO</h2>
+
+            <p class="abertura-texto">
+                Prepare-se para embarcar em uma aventura
+                muito especial.
+            </p>
+
+            <button
+                id="entrar"
+                class="botao-entrar"
+                type="button"
+            >
+                ENTRAR NA AVENTURA
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONVITE
+    ========================== -->
+
+    <main id="convite" class="escondido">
+
+        <!-- CONTROLE DA MÚSICA -->
+
+        <button
+            id="controleMusica"
+            class="controle-musica"
+            type="button"
+        >
+            ♫ Música: ON
+        </button>
+
+
+        <!-- =========================
+             WOODY FIXO
+        ========================== -->
+
+        <div class="woody-fixo">
+
+            <div id="falaWoody" class="fala escondido">
+                Prepare-se para uma aventura inesquecível!
+            </div>
+
+            <button
+                id="woodyBotao"
+                class="woody-botao"
+                type="button"
+                aria-label="Ouvir o Woody"
+                title="Ouvir o Woody"
+            >
+
+                <img
+                    src="woody.png"
+                    alt="Woody"
+                    class="woody"
+                >
+
+            </button>
+
+            <button
+                id="falarWoody"
+                class="botao-voz"
+                type="button"
+            >
+                OUVIR O WOODY
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="nuvem nuvem1"></div>
+            <div class="nuvem nuvem2"></div>
+            <div class="nuvem nuvem3"></div>
+
+            <div class="hero-conteudo">
+
+                <p class="introducao">
+                    ERA UMA VEZ...
+                </p>
+
+                <h1>
+                    UMA GRANDE AVENTURA
+                </h1>
+
+                <p class="descricao">
+                    Há um ano, um pequeno aventureiro chegou
+                    para transformar nossas vidas e encher
+                    nossos dias de amor.
+                </p>
+
+                <div class="estrela-hero">★</div>
+
+                <p class="convite-texto">
+                    E agora chegou a hora de comemorar
+                    o primeiro ano dessa grande aventura!
+                </p>
+
+                <h2 class="nome">
+                    RAEL
+                </h2>
+
+                <p class="idade">
+                    1 ANO
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DATA
+        ========================== -->
+
+        <section class="evento">
+
+            <div class="placa">
+
+                <p class="prepare">
+                    VOCÊ RECEBEU UMA MISSÃO ESPECIAL
+                </p>
+
+                <div class="estrela-placa">★</div>
+
+                <h2>
+                    27 DE MARÇO
+                </h2>
+
+                <h3>
+                    2027
+                </h3>
+
+                <div class="linha"></div>
+
+                <p class="horario">
+                    14:00 às 17:30
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LOCAL
+        ========================== -->
+
+        <section class="local">
+
+            <div class="card">
+
+                <div class="icone-local">
+                    ★
+                </div>
+
+                <p class="mini-titulo">
+                    NOSSO DESTINO
+                </p>
+
+                <h2>
+                    SÍTIO DAS MARIAS
+                </h2>
+
+                <p class="endereco">
+                    Cocho D'Água<br>
+                    Rio Acima — MG
+                </p>
+
+                <a
+                    href="https://maps.app.goo.gl/FjuL9iBEtN6czxCr6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="botao"
+                >
+                    COMO CHEGAR
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTAGEM
+        ========================== -->
+
+        <section class="contagem">
+
+            <p class="mini-titulo claro">
+                A MISSÃO JÁ COMEÇOU
+            </p>
+
+            <h2>
+                CONTAGEM REGRESSIVA
+            </h2>
+
+            <div class="contador">
+
+                <div>
+                    <strong id="dias">00</strong>
+                    <span>DIAS</span>
+                </div>
+
+                <div>
+                    <strong id="horas">00</strong>
+                    <span>HORAS</span>
+                </div>
+
+                <div>
+                    <strong id="minutos">00</strong>
+                    <span>MIN</span>
+                </div>
+
+                <div>
+                    <strong id="segundos">00</strong>
+                    <span>SEG</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRESENTES
+        ========================== -->
+
+        <section class="presentes">
+
+            <div class="card-presentes">
+
+                <div class="presente-topo">
+                    ★
+                </div>
+
+                <p class="mini-titulo">
+                    MISSÃO PRESENTE
+                </p>
+
+                <h2>
+                    SUGESTÕES DE PRESENTES
+                </h2>
+
+                <p class="texto-presentes">
+                    Se quiser presentear o Rael,
+                    deixamos algumas sugestões:
+                </p>
+
+                <div class="presente-item">
+
+                    <div class="presente-icone">
+                        👕
+                    </div>
+
+                    <div>
+                        <strong>ROUPAS</strong>
+                        <span>Tamanho 2 anos</span>
+                    </div>
+
+                </div>
+
+                <div class="presente-item">
+
+                    <div class="presente-icone">
+                        👟
+                    </div>
+
+                    <div>
+                        <strong>CALÇADOS</strong>
+                        <span>Tamanho 22</span>
+                    </div>
+
+                </div>
+
+                <div class="presente-item">
+
+                    <div class="presente-icone">
+                        🧩
+                    </div>
+
+                    <div>
+                        <strong>BRINQUEDOS</strong>
+                        <span>Interativos e educativos</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONFIRMAÇÃO
+        ========================== -->
+
+        <section class="confirmacao">
+
+            <div class="confirmacao-conteudo">
+
+                <p class="mini-titulo claro">
+                    ÚLTIMA MISSÃO
+                </p>
+
+                <h2>
+                    VOCÊ VEM COM A GENTE?
+                </h2>
+
+                <p>
+                    Sua presença vai deixar essa aventura
+                    ainda mais especial!
+                </p>
+
+                <a
+                    href="https://wa.me/5531991273931?text=Oi!%20Quero%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%201%20ano%20do%20Rael"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="botao-confirmar"
+                >
+                    CONFIRMAR PRESENÇA
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL
+        ========================== -->
+
+        <section class="final">
+
+            <div class="final-conteudo">
+
+                <p class="frase">
+                    "Algumas aventuras ficam para sempre
+                    no coração."
+                </p>
+
+                <div class="estrelas-final">
+                    ★ ★ ★
+                </div>
+
+                <h1>
+                    RAEL
+                </h1>
+
+                <h2>
+                    1 ANO
+                </h2>
+
+                <p class="rodape">
+                    Obrigado por fazer parte
+                    dessa história!
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
