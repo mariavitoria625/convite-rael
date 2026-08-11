@@ -1,12 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const entrar = document.getElementById("entrar");
-    const abertura = document.getElementById("abertura");
-    const convite = document.getElementById("convite");
 
-    const musica = document.getElementById("musica");
+    /* =========================
+       ELEMENTOS
+    ========================== */
+
+    const entrar =
+        document.getElementById("entrar");
+
+    const abertura =
+        document.getElementById("abertura");
+
+    const convite =
+        document.getElementById("convite");
+
+    const musica =
+        document.getElementById("musica");
+
     const controleMusica =
         document.getElementById("controleMusica");
+
+    const paginas =
+        document.querySelectorAll(
+            ".pagina[data-pagina]"
+        );
+
+    const botoesNavegacao =
+        document.querySelectorAll(
+            "[data-ir]"
+        );
 
 
     /* =========================
@@ -14,7 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ========================== */
 
     if (musica) {
+
         musica.volume = 0.18;
+
     }
 
 
@@ -24,56 +48,81 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (entrar) {
 
-        entrar.addEventListener("click", async function () {
+        entrar.addEventListener(
+            "click",
+            async function () {
 
-            if (musica) {
 
-                musica.volume = 0.18;
+                /* Toca a música */
 
-                try {
+                if (musica) {
 
-                    await musica.play();
+                    musica.volume = 0.18;
 
-                    if (controleMusica) {
-                        controleMusica.textContent =
-                            "♫ Música: ON";
+                    try {
+
+                        await musica.play();
+
+                        if (controleMusica) {
+
+                            controleMusica.textContent =
+                                "♫ Música: ON";
+
+                        }
+
+                    } catch (erro) {
+
+                        console.log(
+                            "Não foi possível iniciar a música:",
+                            erro
+                        );
+
                     }
 
-                } catch (erro) {
+                }
 
-                    console.log(
-                        "Não foi possível iniciar a música:",
-                        erro
+
+                /* Sai da abertura */
+
+                if (abertura) {
+
+                    abertura.classList.add(
+                        "saindo"
                     );
 
                 }
 
+
+                /* Mostra o convite */
+
+                setTimeout(
+                    function () {
+
+                        if (abertura) {
+
+                            abertura.style.display =
+                                "none";
+
+                        }
+
+
+                        if (convite) {
+
+                            convite.classList.remove(
+                                "escondido"
+                            );
+
+                        }
+
+
+                        mostrarPagina(0);
+
+                    },
+                    1000
+                );
+
             }
-
-
-            if (abertura) {
-                abertura.classList.add("saindo");
-            }
-
-
-            setTimeout(function () {
-
-                if (abertura) {
-                    abertura.style.display = "none";
-                }
-
-                if (convite) {
-                    convite.classList.remove("escondido");
-                }
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-
-            }, 1000);
-
-        });
+        );
 
     }
 
@@ -82,11 +131,17 @@ document.addEventListener("DOMContentLoaded", function () {
        CONTROLE DA MÚSICA
     ========================== */
 
-    if (controleMusica && musica) {
+    if (
+        controleMusica &&
+        musica
+    ) {
 
         controleMusica.addEventListener(
             "click",
             async function () {
+
+
+                /* PAUSAR */
 
                 if (!musica.paused) {
 
@@ -95,23 +150,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     controleMusica.textContent =
                         "♫ Música: OFF";
 
-                } else {
+                    return;
 
-                    try {
+                }
 
-                        await musica.play();
 
-                        controleMusica.textContent =
-                            "♫ Música: ON";
+                /* VOLTAR A TOCAR */
 
-                    } catch (erro) {
+                try {
 
-                        console.log(
-                            "Erro ao voltar a música:",
-                            erro
-                        );
+                    await musica.play();
 
-                    }
+                    controleMusica.textContent =
+                        "♫ Música: ON";
+
+                } catch (erro) {
+
+                    console.log(
+                        "Erro ao voltar a música:",
+                        erro
+                    );
 
                 }
 
@@ -119,6 +177,150 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
+
+
+    /* =========================
+       MOSTRAR PÁGINA
+    ========================== */
+
+    function mostrarPagina(numero) {
+
+
+        paginas.forEach(
+            function (pagina) {
+
+                pagina.classList.remove(
+                    "ativa"
+                );
+
+            }
+        );
+
+
+        const paginaSelecionada =
+            document.querySelector(
+                '.pagina[data-pagina="' +
+                numero +
+                '"]'
+            );
+
+
+        if (paginaSelecionada) {
+
+            paginaSelecionada.classList.add(
+                "ativa"
+            );
+
+
+            /*
+               Sempre começa no topo
+               da página.
+            */
+
+            paginaSelecionada.scrollTop = 0;
+
+        }
+
+    }
+
+
+    /* =========================
+       BOTÕES DE NAVEGAÇÃO
+    ========================== */
+
+    botoesNavegacao.forEach(
+        function (botao) {
+
+            botao.addEventListener(
+                "click",
+                function () {
+
+                    const destino =
+                        Number(
+                            botao.getAttribute(
+                                "data-ir"
+                            )
+                        );
+
+
+                    mostrarPagina(
+                        destino
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================
+       TECLADO
+       SETAS ← →
+    ========================== */
+
+    document.addEventListener(
+        "keydown",
+        function (evento) {
+
+            /*
+               Descobre a página atual.
+            */
+
+            const paginaAtual =
+                document.querySelector(
+                    ".pagina.ativa[data-pagina]"
+                );
+
+
+            if (!paginaAtual) {
+                return;
+            }
+
+
+            const numeroAtual =
+                Number(
+                    paginaAtual.getAttribute(
+                        "data-pagina"
+                    )
+                );
+
+
+            /*
+               Seta direita
+               avança.
+            */
+
+            if (
+                evento.key === "ArrowRight" &&
+                numeroAtual < paginas.length - 1
+            ) {
+
+                mostrarPagina(
+                    numeroAtual + 1
+                );
+
+            }
+
+
+            /*
+               Seta esquerda
+               volta.
+            */
+
+            if (
+                evento.key === "ArrowLeft" &&
+                numeroAtual > 0
+            ) {
+
+                mostrarPagina(
+                    numeroAtual - 1
+                );
+
+            }
+
+        }
+    );
 
 
     /* =========================
@@ -133,31 +335,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function atualizarContagem() {
 
-        const agora = new Date().getTime();
+
+        const agora =
+            new Date().getTime();
+
 
         const distancia =
             dataFesta - agora;
 
 
+        /*
+           Se a festa chegou,
+           zera o contador.
+        */
+
         if (distancia <= 0) {
 
             const dias =
-                document.getElementById("dias");
+                document.getElementById(
+                    "dias"
+                );
 
             const horas =
-                document.getElementById("horas");
+                document.getElementById(
+                    "horas"
+                );
 
             const minutos =
-                document.getElementById("minutos");
+                document.getElementById(
+                    "minutos"
+                );
 
             const segundos =
-                document.getElementById("segundos");
+                document.getElementById(
+                    "segundos"
+                );
 
 
-            if (dias) dias.textContent = "00";
-            if (horas) horas.textContent = "00";
-            if (minutos) minutos.textContent = "00";
-            if (segundos) segundos.textContent = "00";
+            if (dias) {
+                dias.textContent = "00";
+            }
+
+            if (horas) {
+                horas.textContent = "00";
+            }
+
+            if (minutos) {
+                minutos.textContent = "00";
+            }
+
+            if (segundos) {
+                segundos.textContent = "00";
+            }
+
 
             return;
 
@@ -167,7 +397,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const dias =
             Math.floor(
                 distancia /
-                (1000 * 60 * 60 * 24)
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
             );
 
 
@@ -175,9 +410,18 @@ document.addEventListener("DOMContentLoaded", function () {
             Math.floor(
                 (
                     distancia %
-                    (1000 * 60 * 60 * 24)
+                    (
+                        1000 *
+                        60 *
+                        60 *
+                        24
+                    )
                 ) /
-                (1000 * 60 * 60)
+                (
+                    1000 *
+                    60 *
+                    60
+                )
             );
 
 
@@ -185,9 +429,16 @@ document.addEventListener("DOMContentLoaded", function () {
             Math.floor(
                 (
                     distancia %
-                    (1000 * 60 * 60)
+                    (
+                        1000 *
+                        60 *
+                        60
+                    )
                 ) /
-                (1000 * 60)
+                (
+                    1000 *
+                    60
+                )
             );
 
 
@@ -195,43 +446,69 @@ document.addEventListener("DOMContentLoaded", function () {
             Math.floor(
                 (
                     distancia %
-                    (1000 * 60)
+                    (
+                        1000 *
+                        60
+                    )
                 ) /
                 1000
             );
 
 
         const elementoDias =
-            document.getElementById("dias");
+            document.getElementById(
+                "dias"
+            );
 
         const elementoHoras =
-            document.getElementById("horas");
+            document.getElementById(
+                "horas"
+            );
 
         const elementoMinutos =
-            document.getElementById("minutos");
+            document.getElementById(
+                "minutos"
+            );
 
         const elementoSegundos =
-            document.getElementById("segundos");
+            document.getElementById(
+                "segundos"
+            );
 
 
         if (elementoDias) {
+
             elementoDias.textContent =
-                String(dias).padStart(2, "0");
+                String(dias)
+                .padStart(2, "0");
+
         }
+
 
         if (elementoHoras) {
+
             elementoHoras.textContent =
-                String(horas).padStart(2, "0");
+                String(horas)
+                .padStart(2, "0");
+
         }
+
 
         if (elementoMinutos) {
+
             elementoMinutos.textContent =
-                String(minutos).padStart(2, "0");
+                String(minutos)
+                .padStart(2, "0");
+
         }
 
+
         if (elementoSegundos) {
+
             elementoSegundos.textContent =
-                String(segundos).padStart(2, "0");
+                String(segundos)
+                .padStart(2, "0");
+
         }
 
     }
@@ -239,85 +516,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     atualizarContagem();
 
+
     setInterval(
         atualizarContagem,
         1000
     );
 
-
-    /* =========================
-       ANIMAÇÃO AO ROLAR
-    ========================== */
-
-    const elementos =
-        document.querySelectorAll(
-            ".placa, .card, .card-presentes, .confirmacao-conteudo"
-        );
-
-
-    if ("IntersectionObserver" in window) {
-
-        const observador =
-            new IntersectionObserver(
-
-                function (entradas) {
-
-                    entradas.forEach(
-                        function (entrada) {
-
-                            if (
-                                entrada.isIntersecting
-                            ) {
-
-                                entrada.target.style.opacity =
-                                    "1";
-
-                                entrada.target.style.transform =
-                                    "translateY(0)";
-
-                            }
-
-                        }
-                    );
-
-                },
-
-                {
-                    threshold: 0.15
-                }
-
-            );
-
-
-        elementos.forEach(
-            function (elemento) {
-
-                elemento.style.opacity = "0";
-
-                elemento.style.transform =
-                    "translateY(30px)";
-
-                elemento.style.transition =
-                    "opacity .8s ease, transform .8s ease";
-
-                observador.observe(elemento);
-
-            }
-        );
-
-    } else {
-
-        elementos.forEach(
-            function (elemento) {
-
-                elemento.style.opacity = "1";
-
-                elemento.style.transform =
-                    "translateY(0)";
-
-            }
-        );
-
-    }
 
 });
